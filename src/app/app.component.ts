@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { Navbar } from './navbar/navbar.component';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { TopStoriesService } from './core/services/top-stories.service';
-import { Observable } from 'rxjs';
 import { Result, TopStories } from './core/models/top-stories.model';
 
 @Component({
