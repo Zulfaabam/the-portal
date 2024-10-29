@@ -13,20 +13,14 @@
         {{ story.section }}
       </p>
       <div class="h-4 w-[1px] bg-gray-300"></div>
-      <p class="text-gray-500 truncate w-[300px]">{{ story.byline }}</p>
+      <p class="text-gray-500 truncate w-[200px]">{{ story.byline }}</p>
     </div>
   </div>
-  <a
-    [href]="story.url"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="relative min-w-[300px] h-[200px]"
-  >
+  <a [href]="story.url" target="_blank" rel="noopener noreferrer">
     <img
       [src]="story.multimedia[1].url"
       [alt]="story.multimedia[1].caption"
-      fill
-      class="rounded-xl"
+      class="rounded-xl min-w-[300px] h-[200px]"
     />
   </a>
 </div>

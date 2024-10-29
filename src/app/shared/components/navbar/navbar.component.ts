@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { SectionListService } from '../../../core/services/section-list.service';
+import { SectionResult } from '../../../core/models/section-list.model';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +10,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   templateUrl: './navbar.component.html',
 })
 export class Navbar {
-  sections = [
+  menuItems = [
     {
       id: 1,
       path: '/',
@@ -20,4 +22,15 @@ export class Navbar {
       title: 'sections',
     },
   ];
+
+  sections!: SectionResult[];
+
+  constructor(private sectionListService: SectionListService) {}
+
+  ngOnInit() {
+    this.sectionListService.getSectionList().subscribe((data) => {
+      console.log(data);
+      this.sections = data.results;
+    });
+  }
 }
