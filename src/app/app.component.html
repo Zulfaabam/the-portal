@@ -1,55 +1,61 @@
-<div class="relative min-h-screen max-w-screen-2xl mx-auto">
+<div class="relative min-h-screen">
   <app-navbar />
-  <main class="pt-24">
-    <div class="flex gap-5">
-      <div class="w-1/2">
-        <h1 class="text-3xl font-serif font-semibold mb-2">
-          {{ firstStory.title }}
-        </h1>
-        <div class="flex gap-2 items-center mb-4">
-          <p class="text-orange-600 font-medium uppercase">
-            {{ firstStory.section }}
-          </p>
-          <div class="h-4 w-[1px] bg-gray-300"></div>
-          <p class="text-gray-500">{{ firstStory.byline }}</p>
+
+  <main class="py-24 space-y-16 max-w-screen-2xl mx-auto">
+    <section class="flex gap-5">
+      @defer (when topStories) {
+        <div class="w-1/2">
+          <top-stories-big [story]="firstStory" />
         </div>
-        <div class="relative w-[756px] h-[504px]">
-          <img
-            [ngSrc]="firstStory.multimedia[1].url"
-            [alt]="firstStory.multimedia[1].caption"
-            fill
-            priority
-            class="rounded-xl"
-          />
-        </div>
-      </div>
-      <div class="w-1/2 space-y-3">
-        @for (story of topStories; track story.title; let idx = $index) {
-        <div class="flex gap-6 items-start">
-          <div class="flex flex-col gap-5">
-            <h6 class="text-lg font-semibold font-serif">{{ story.title }}</h6>
-            <p class="text-gray-600">{{ story.abstract }}</p>
-            <div class="flex gap-2 items-center text-sm">
-              <p class="text-orange-600 font-medium uppercase">
-                {{ story.section }}
-              </p>
-              <div class="h-4 w-[1px] bg-gray-300"></div>
-              <p class="text-gray-500 truncate w-[300px]">{{ story.byline }}</p>
+        <div class="w-1/2 space-y-3">
+          @for (story of topStories; track story.title; let idx = $index) {
+            <div>
+              <top-stories-small [story]="story" />
             </div>
-          </div>
-          <div class="relative min-w-[300px] h-[200px]">
-            <img
-              [ngSrc]="story.multimedia[2].url"
-              [alt]="story.multimedia[2].caption"
-              fill
-              class="rounded-xl"
-            />
-          </div>
+          }
         </div>
+      } @loading {
+        <p>Loading...</p>
+      }
+    </section>
+
+    <section>
+      <div class="flex gap-8 items-center justify-center mb-8">
+        <div class="h-[1px] bg-gray-300 w-1/3"></div>
+        <h2 class="text-3xl font-medium">Latest News</h2>
+        <div class="h-[1px] bg-gray-300 w-1/3"></div>
+      </div>
+      <div class="grid grid-cols-4 gap-4">
+        @defer (when latestNews) {
+          @for (news of latestNews; track news.title) {
+            <div class="flex flex-col gap-2">
+              <img
+                [src]="news.multimedia[2].url"
+                [alt]="news.multimedia[2].caption"
+                [width]="news.multimedia[2].width"
+                [height]="news.multimedia[2].height"
+                class="rounded-xl"
+              />
+              <div class="flex gap-2 items-center">
+                <p class="text-orange-600 font-medium uppercase mt-auto">
+                  {{ news.section }}
+                </p>
+                <div class="h-4 w-[1px] bg-gray-300"></div>
+                <p class="text-gray-500 truncate w-[150px]">
+                  {{ news.byline }}
+                </p>
+              </div>
+              <h6 class="text-lg font-semibold font-serif">{{ news.title }}</h6>
+            </div>
+          }
+        } @loading {
+          <p>Loading latest news...</p>
         }
       </div>
-    </div>
+    </section>
   </main>
+
+  <app-footer />
 </div>
 
 <router-outlet />
