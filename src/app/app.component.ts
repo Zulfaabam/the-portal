@@ -42,7 +42,9 @@ export class AppComponent {
     ]).subscribe(([stories, newswire]) => {
       this.firstStory = stories.results[0];
       this.topStories = stories.results.slice(1, 4);
-      this.latestNews = newswire.results.slice(0, 8);
+      this.latestNews = newswire.results
+        .filter((r) => r.multimedia.length > 0)
+        .slice(0, 8);
     });
   }
 }
