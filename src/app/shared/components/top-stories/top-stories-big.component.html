@@ -1,6 +1,11 @@
-<h1 class="text-3xl font-serif font-semibold mb-2">
+<a
+  class="text-3xl font-serif font-semibold mb-2"
+  [href]="story.url"
+  target="_blank"
+  rel="noopener noreferrer"
+>
   {{ story.title }}
-</h1>
+</a>
 <div class="flex gap-2 items-center mb-4">
   <p class="text-orange-600 font-medium uppercase">
     {{ story.section }}
@@ -8,10 +13,12 @@
   <div class="h-4 w-[1px] bg-gray-300"></div>
   <p class="text-gray-500">{{ story.byline }}</p>
 </div>
-<img
-  [src]="story.multimedia[1].url"
-  [alt]="story.multimedia[1].caption"
-  fill
-  priority
-  class="rounded-xl w-[756px] h-[504px]"
-/>
+<a [href]="story.url" target="_blank" rel="noopener noreferrer">
+  <img
+    [src]="story.multimedia[1].url"
+    [alt]="story.multimedia[1].caption"
+    fill
+    priority
+    class="rounded-xl w-[756px] h-[504px]"
+  />
+</a>

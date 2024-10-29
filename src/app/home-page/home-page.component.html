@@ -28,13 +28,15 @@
       @defer (when latestNews) {
         @for (news of latestNews; track news.title) {
           <div class="flex flex-col gap-2">
-            <img
-              [src]="news.multimedia[2].url"
-              [alt]="news.multimedia[2].caption"
-              [width]="news.multimedia[2].width"
-              [height]="news.multimedia[2].height"
-              class="rounded-xl"
-            />
+            <a [href]="news.url" target="_blank" rel="noopener noreferrer">
+              <img
+                [src]="news.multimedia[2].url"
+                [alt]="news.multimedia[2].caption"
+                [width]="news.multimedia[2].width"
+                [height]="news.multimedia[2].height"
+                class="rounded-xl"
+              />
+            </a>
             <div class="flex gap-2 items-center">
               <p class="text-orange-600 font-medium uppercase mt-auto">
                 {{ news.section }}
@@ -44,9 +46,14 @@
                 {{ news.byline }}
               </p>
             </div>
-            <h6 class="text-lg font-semibold font-serif">
+            <a
+              [href]="news.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-lg font-semibold font-serif"
+            >
               {{ news.title }}
-            </h6>
+            </a>
           </div>
         }
       } @loading {

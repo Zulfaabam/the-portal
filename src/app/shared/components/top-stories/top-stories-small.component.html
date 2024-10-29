@@ -1,6 +1,12 @@
 <div class="flex gap-6 items-start">
   <div class="flex flex-col gap-5">
-    <h6 class="text-lg font-semibold font-serif">{{ story.title }}</h6>
+    <a
+      [href]="story.url"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-lg font-semibold font-serif"
+      >{{ story.title }}</a
+    >
     <p class="text-gray-600 abstract">{{ story.abstract }}</p>
     <div class="flex gap-2 items-center text-sm">
       <p class="text-orange-600 font-medium uppercase">
@@ -10,12 +16,17 @@
       <p class="text-gray-500 truncate w-[300px]">{{ story.byline }}</p>
     </div>
   </div>
-  <div class="relative min-w-[300px] h-[200px]">
+  <a
+    [href]="story.url"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="relative min-w-[300px] h-[200px]"
+  >
     <img
       [src]="story.multimedia[1].url"
       [alt]="story.multimedia[1].caption"
       fill
       class="rounded-xl"
     />
-  </div>
+  </a>
 </div>
