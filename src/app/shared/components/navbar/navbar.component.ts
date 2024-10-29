@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
 })
 export class Navbar {
@@ -15,13 +16,8 @@ export class Navbar {
     },
     {
       id: 2,
-      path: '/technology',
-      title: 'technology',
-    },
-    {
-      id: 3,
-      path: '/world',
-      title: 'world',
+      path: '/section',
+      title: 'sections',
     },
   ];
 }

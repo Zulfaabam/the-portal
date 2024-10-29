@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { Navbar } from './shared/components/navbar/navbar.component';
+import { Navbar } from '../shared/components/navbar/navbar.component';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
-import { TopStoriesService } from './core/services/top-stories.service';
-import { Result } from './core/models/result.model';
-import { TopStoriesBig } from './shared/components/top-stories/top-stories-big.component';
-import { TopStoriesSmall } from './shared/components/top-stories/top-stories-small.component';
+import { TopStoriesService } from '../core/services/top-stories.service';
+import { Result } from '../core/models/result.model';
+import { TopStoriesBig } from '../shared/components/top-stories/top-stories-big.component';
+import { TopStoriesSmall } from '../shared/components/top-stories/top-stories-small.component';
 import { forkJoin } from 'rxjs';
-import { TimesNewswireService } from './core/services/times-newswire.service';
-import { Footer } from './shared/components/footer/footer.component';
+import { TimesNewswireService } from '../core/services/times-newswire.service';
+import { Footer } from '../shared/components/footer/footer.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'home-page',
   standalone: true,
   imports: [
     RouterOutlet,
@@ -24,10 +24,9 @@ import { Footer } from './shared/components/footer/footer.component';
     TopStoriesSmall,
     Footer,
   ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  templateUrl: './home-page.component.html',
 })
-export class AppComponent {
+export class HomePage {
   firstStory!: Result;
   topStories!: Result[];
   latestNews!: Result[];
