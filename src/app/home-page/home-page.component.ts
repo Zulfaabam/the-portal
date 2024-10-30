@@ -9,6 +9,7 @@ import { TopStoriesSmall } from '../shared/components/top-stories/top-stories-sm
 import { forkJoin } from 'rxjs';
 import { TimesNewswireService } from '../core/services/times-newswire.service';
 import { Footer } from '../shared/components/footer/footer.component';
+import { Loading } from '../shared/components/loading/loading.component';
 
 @Component({
   selector: 'home-page',
@@ -23,6 +24,7 @@ import { Footer } from '../shared/components/footer/footer.component';
     TopStoriesBig,
     TopStoriesSmall,
     Footer,
+    Loading,
   ],
   templateUrl: './home-page.component.html',
 })
@@ -44,7 +46,7 @@ export class HomePage {
       this.firstStory = stories.results[0];
       this.topStories = stories.results.slice(1, 4);
       this.latestNews = newswire.results
-        .filter((r) => r.multimedia.length > 0)
+        .filter((r) => r.title !== '' && r.multimedia.length > 0)
         .slice(0, 8);
     });
   }
