@@ -33,25 +33,6 @@
             fill="#ffffff"
           />
         </svg>
-        <div
-          class="section-menu absolute -bottom-[256px] md:-right-20 xl:-right-4 shadow-md bg-gray-100 rounded-xl w-[500px] h-60 z-50 p-4 cursor-default"
-          [ngClass]="isSectionMenuOpened ? 'block' : 'hidden'"
-          (mouseleave)="isSectionMenuOpened = false"
-        >
-          <ul class="grid grid-cols-3 gap-y-1">
-            @for (section of sections; track section.section) {
-              <li>
-                <a
-                  [routerLink]="['/section', section.section]"
-                  routerLinkActive="router-link-active"
-                  class="text-slate-900 font-medium hover:underline transition-all duration-300 ease-in"
-                >
-                  {{ section.display_name }}
-                </a>
-              </li>
-            }
-          </ul>
-        </div>
       </li>
     </ul>
     <form class="hidden md:block sm:w-[250px] lg:w-[300px]">
@@ -121,6 +102,25 @@
         />
       </svg>
     </button>
+    <div
+      class="w-1/2 absolute -bottom-48 right-0 shadow-md bg-neutral-950 h-48 z-50 p-4 cursor-default"
+      [ngClass]="isSectionMenuOpened ? 'block' : 'hidden'"
+      (mouseleave)="isSectionMenuOpened = false"
+    >
+      <ul class="grid grid-cols-4 gap-y-1">
+        @for (section of sections; track section.section) {
+          <li>
+            <a
+              [routerLink]="['/section', section.section]"
+              routerLinkActive="router-link-active"
+              class="text-gray-300 font-medium hover:underline transition-all duration-300 ease-in"
+            >
+              {{ section.display_name }}
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
     <div
       class="bg-neutral-950 w-full h-64 absolute -bottom-64 left-0 right-0 px-4 md:hidden"
       [ngClass]="isMenuMobileOpen ? 'block' : 'hidden'"
