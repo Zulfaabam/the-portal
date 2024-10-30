@@ -1,20 +1,58 @@
-<nav class="fixed top-0 left-0 right-0 bg-neutral-950 text-slate-50 z-50 px-4">
+<nav class="fixed top-0 left-0 right-0 bg-neutral-950 text-slate-50 z-40 px-4">
   <div
     class="max-w-screen-lg 2xl:max-w-screen-2xl mx-auto flex items-center justify-between min-h-16"
   >
     <h1 class="text-3xl font-serif w-[300px]">The Portal</h1>
     <ul class="flex items-center gap-8 capitalize">
-      @for (menu of menuItems; track menu.id) {
-        <li class="cursor-pointer">
-          <a
-            [routerLink]="menu.path"
-            routerLinkActive="router-link-active"
-            ariaCurrentWhenActive="page"
-          >
-            {{ menu.title }}
-          </a>
-        </li>
-      }
+      <li class="cursor-pointer">
+        <a
+          routerLink="/"
+          routerLinkActive="router-link-active"
+          ariaCurrentWhenActive="page"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="cursor-pointer flex gap-1 items-center relative"
+        (mouseover)="isSectionMenuOpened = true"
+      >
+        <p>Sections</p>
+        <svg
+          width="20px"
+          height="20px"
+          viewBox="0 0 24 24"
+          fill="#ffffff"
+          xmlns="http://www.w3.org/2000/svg"
+          class="dropdown-arrow"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z"
+            fill="#ffffff"
+          />
+        </svg>
+        <div
+          class="section-menu absolute -bottom-80 -left-48 bg-gray-100 rounded-xl w-96 h-80 z-50 p-4 cursor-default"
+          [ngClass]="isSectionMenuOpened ? 'block' : 'hidden'"
+          (mouseleave)="isSectionMenuOpened = false"
+        >
+          <ul class="grid grid-cols-2 gap-y-1">
+            @for (section of sections; track section.section) {
+              <li>
+                <a
+                  [routerLink]="['/section', section.section]"
+                  routerLinkActive="router-link-active"
+                  class="text-slate-900 font-medium hover:underline transition-all duration-300 ease-in"
+                >
+                  {{ section.display_name }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      </li>
     </ul>
     <form class="w-[300px]">
       <label

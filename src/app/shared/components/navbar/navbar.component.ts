@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SectionResult } from '../../../core/models/section-list.model';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, NgClass],
   templateUrl: './navbar.component.html',
 })
 export class Navbar {
+  isSectionMenuOpened: boolean = false;
+
   menuItems = [
     {
       id: 1,

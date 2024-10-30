@@ -4,5 +4,5 @@ import { HomePage } from './home-page/home-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomePage },
-  { path: 'section', component: SectionPage },
+  { path: 'section/:section', component: SectionPage },
 ];
