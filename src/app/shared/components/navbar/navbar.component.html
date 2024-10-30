@@ -1,9 +1,9 @@
-<nav class="fixed top-0 left-0 right-0 bg-neutral-950 text-slate-50 z-40 px-4">
+<nav class="fixed top-0 left-0 right-0 bg-neutral-950 text-slate-50 z-40">
   <div
-    class="max-w-screen-lg 2xl:max-w-screen-2xl mx-auto flex items-center justify-between min-h-16"
+    class="px-4 2xl:px-0 max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl min-[1632px]:max-w-screen-2xl mx-auto flex items-center justify-between min-h-16 relative"
   >
-    <h1 class="text-3xl font-serif w-[300px]">The Portal</h1>
-    <ul class="flex items-center gap-8 capitalize">
+    <h1 class="text-3xl font-serif sm:w-[250px] lg:w-[300px]">The Portal</h1>
+    <ul class="hidden md:flex items-center gap-4 lg:gap-8 capitalize">
       <li class="cursor-pointer">
         <a
           routerLink="/"
@@ -54,7 +54,7 @@
         </div>
       </li>
     </ul>
-    <form class="w-[300px]">
+    <form class="hidden md:block sm:w-[250px] lg:w-[300px]">
       <label
         for="news-search"
         class="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -96,5 +96,78 @@
         </button>
       </div>
     </form>
+    <button
+      data-collapse-toggle="navbar-hamburger"
+      type="button"
+      class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-all md:hidden"
+      aria-controls="navbar-hamburger"
+      aria-expanded="false"
+      (click)="openMenuMobile()"
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg
+        class="w-5 h-5"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 17 14"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15"
+        />
+      </svg>
+    </button>
+    <div
+      class="bg-neutral-950 w-full h-64 absolute -bottom-64 left-0 right-0 px-4 md:hidden"
+      [ngClass]="isMenuMobileOpen ? 'block' : 'hidden'"
+    >
+      <ul class="flex flex-col gap-4 capitalize">
+        <li class="cursor-pointer">
+          <a
+            routerLink="/"
+            routerLinkActive="router-link-active"
+            ariaCurrentWhenActive="page"
+          >
+            Home
+          </a>
+        </li>
+        <li class="flex gap-1 items-center relative">
+          <p>Sections</p>
+          <svg
+            width="20px"
+            height="20px"
+            viewBox="0 0 24 24"
+            fill="#ffffff"
+            xmlns="http://www.w3.org/2000/svg"
+            class="dropdown-arrow"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z"
+              fill="#ffffff"
+            />
+          </svg>
+        </li>
+      </ul>
+      <ul class="grid grid-cols-3">
+        @for (section of sections; track section.section) {
+          <li>
+            <a
+              [routerLink]="['/section', section.section]"
+              routerLinkActive="router-link-active"
+              class="text-gray-300 hover:underline transition-all duration-300 ease-in"
+              (click)="openMenuMobile()"
+            >
+              {{ section.display_name }}
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
   </div>
 </nav>

@@ -11,6 +11,7 @@ import { NgClass } from '@angular/common';
 })
 export class Navbar {
   isSectionMenuOpened: boolean = false;
+  isMenuMobileOpen: boolean = false;
 
   menuItems = [
     {
@@ -103,4 +104,8 @@ export class Navbar {
       display_name: 'World',
     },
   ];
+
+  openMenuMobile() {
+    this.isMenuMobileOpen = !this.isMenuMobileOpen;
+  }
 }
