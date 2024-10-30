@@ -1,5 +1,25 @@
 <main
   class="py-24 space-y-16 max-w-screen-xl min-[1632px]:max-w-screen-2xl mx-auto min-h-screen"
 >
-  <div>section page {{ section }}</div>
+  <div class="flex items-center gap-3 w-full">
+    <h1 class="text-4xl font-serif font-semibold capitalize">
+      {{ sectionTitle }}
+    </h1>
+    <div class="h-[1px] w-full bg-gray-300"></div>
+    <p class="text-gray-300">section</p>
+  </div>
+
+  <div class="grid grid-cols-2 gap-6">
+    @defer (when (newsResult && newsResult.length > 0)) {
+      @for (news of newsResult; track news.title) {
+        <top-stories-small [story]="news" />
+      }
+    } @loading {
+      <app-loading class="col-span-2" />
+    } @placeholder {
+      <p>placeholder</p>
+    } @error {
+      <p>Error...</p>
+    }
+  </div>
 </main>
