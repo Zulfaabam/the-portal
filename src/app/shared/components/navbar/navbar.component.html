@@ -34,11 +34,11 @@
           />
         </svg>
         <div
-          class="section-menu absolute -bottom-80 -left-48 bg-gray-100 rounded-xl w-96 h-80 z-50 p-4 cursor-default"
+          class="section-menu absolute -bottom-[256px] md:-right-20 xl:-right-4 shadow-md bg-gray-100 rounded-xl w-[500px] h-60 z-50 p-4 cursor-default"
           [ngClass]="isSectionMenuOpened ? 'block' : 'hidden'"
           (mouseleave)="isSectionMenuOpened = false"
         >
-          <ul class="grid grid-cols-2 gap-y-1">
+          <ul class="grid grid-cols-3 gap-y-1">
             @for (section of sections; track section.section) {
               <li>
                 <a

@@ -8,7 +8,7 @@
       </div>
       <div class="h-[1px] bg-gray-300 w-full xl:hidden"></div>
       <div class="w-full xl:w-1/2 space-y-3">
-        @for (story of topStories; track story.title; let idx = $index) {
+        @for (story of topStories; track story.title) {
           <div>
             <top-stories-small [story]="story" />
           </div>
