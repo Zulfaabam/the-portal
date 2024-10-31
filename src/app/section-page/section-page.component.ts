@@ -3,14 +3,17 @@ import { TopStoriesService } from '../core/services/top-stories.service';
 import { Result } from '../core/models/result.model';
 import { TopStoriesSmall } from '../shared/components/top-stories/top-stories-small.component';
 import { Loading } from '../shared/components/loading/loading.component';
+import { Error } from '../shared/components/error/error.component';
 
 @Component({
   selector: 'section-page',
   standalone: true,
   templateUrl: './section-page.component.html',
-  imports: [TopStoriesSmall, Loading],
+  imports: [TopStoriesSmall, Loading, Error],
 })
 export class SectionPage {
+  isLoading: boolean = false;
+  errorMessage: string = '';
   newsResult!: Result[];
   sectionTitle: string = '';
 
@@ -19,10 +22,24 @@ export class SectionPage {
   @Input()
   set section(section: string) {
     if (!section) return;
+
+    this.isLoading = true;
+
     this.sectionTitle = section;
-    this.newsResult = [];
-    this.topStoriesService.getTopStories(section).subscribe((data) => {
-      this.newsResult = data.results;
-    });
+
+    this.topStoriesService
+      .getTopStories(section)
+      .pipe()
+      .subscribe({
+        next: (data) => {
+          this.newsResult = data.results;
+        },
+        error: (err) => {
+          this.errorMessage = err;
+        },
+        complete: () => {
+          this.isLoading = false;
+        },
+      });
   }
 }

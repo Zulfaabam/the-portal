@@ -10,6 +10,7 @@ import { forkJoin } from 'rxjs';
 import { TimesNewswireService } from '../core/services/times-newswire.service';
 import { Footer } from '../shared/components/footer/footer.component';
 import { Loading } from '../shared/components/loading/loading.component';
+import { Error } from '../shared/components/error/error.component';
 
 @Component({
   selector: 'home-page',
@@ -25,10 +26,13 @@ import { Loading } from '../shared/components/loading/loading.component';
     TopStoriesSmall,
     Footer,
     Loading,
+    Error,
   ],
   templateUrl: './home-page.component.html',
 })
 export class HomePage {
+  isLoading: boolean = false;
+  errorMessage: string = '';
   firstStory!: Result;
   topStories!: Result[];
   latestNews!: Result[];
@@ -39,15 +43,25 @@ export class HomePage {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
+
     forkJoin([
       this.topStoriesService.getTopStories('home'),
       this.timesNewswireService.getTimesNews(),
-    ]).subscribe(([stories, newswire]) => {
-      this.firstStory = stories.results[0];
-      this.topStories = stories.results.slice(1, 4);
-      this.latestNews = newswire.results
-        .filter((r) => r.title !== '' && r.multimedia.length > 0)
-        .slice(0, 8);
+    ]).subscribe({
+      next: ([stories, newswire]) => {
+        this.firstStory = stories.results[0];
+        this.topStories = stories.results.slice(1, 4);
+        this.latestNews = newswire.results
+          .filter((r) => r.title !== '' && r.multimedia.length > 0)
+          .slice(0, 8);
+      },
+      error: (err) => {
+        this.errorMessage = err;
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
     });
   }
 }

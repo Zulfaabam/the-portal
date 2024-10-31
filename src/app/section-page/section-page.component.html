@@ -12,16 +12,14 @@
   </div>
 
   <div class="grid grid-cols-1 xl:grid-cols-2 gap-3 sm:gap-6">
-    @defer (when (newsResult && newsResult.length > 0)) {
+    @if (isLoading) {
+      <app-loading class="col-span-2" />
+    } @else if (errorMessage) {
+      <app-error [errorMessage]="errorMessage" />
+    } @else {
       @for (news of newsResult; track news.title) {
         <top-stories-small [story]="news" />
       }
-    } @loading {
-      <app-loading class="col-span-2" />
-    } @placeholder {
-      <p>placeholder</p>
-    } @error {
-      <p>Error...</p>
     }
   </div>
 </main>
