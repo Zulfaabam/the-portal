@@ -11,6 +11,7 @@ import { TimesNewswireService } from '../core/services/times-newswire.service';
 import { Footer } from '../shared/components/footer/footer.component';
 import { Loading } from '../shared/components/loading/loading.component';
 import { Error } from '../shared/components/error/error.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'home-page',
@@ -56,9 +57,9 @@ export class HomePage {
           .filter((r) => r.title !== '' && r.multimedia.length > 0)
           .slice(0, 8);
       },
-      error: (err) => {
+      error: (err: HttpErrorResponse) => {
         this.isLoading = false;
-        this.errorMessage = err;
+        this.errorMessage = err.message;
       },
       complete: () => {
         this.isLoading = false;

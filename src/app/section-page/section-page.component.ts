@@ -4,6 +4,7 @@ import { Result } from '../core/models/result.model';
 import { TopStoriesSmall } from '../shared/components/top-stories/top-stories-small.component';
 import { Loading } from '../shared/components/loading/loading.component';
 import { Error } from '../shared/components/error/error.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'section-page',
@@ -34,9 +35,10 @@ export class SectionPage {
         next: (data) => {
           this.newsResult = data.results;
         },
-        error: (err) => {
+        error: (err: HttpErrorResponse) => {
           this.isLoading = false;
-          this.errorMessage = err;
+          console.error(err);
+          this.errorMessage = err.message;
         },
         complete: () => {
           this.isLoading = false;

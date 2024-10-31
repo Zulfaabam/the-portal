@@ -6,6 +6,7 @@ import { SearchService } from '../core/services/search.service';
 import { Doc } from '../core/models/article-search.model';
 import { Error } from '../shared/components/error/error.component';
 import { filter } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'search-page',
@@ -37,9 +38,9 @@ export class SearchPage {
           next: (data) => {
             this.searchResult = data.response.docs;
           },
-          error: (err) => {
+          error: (err: HttpErrorResponse) => {
             this.isLoading = false;
-            this.errorMessage = err;
+            this.errorMessage = err.message;
           },
           complete: () => (this.isLoading = false),
         });

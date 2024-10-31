@@ -60,14 +60,6 @@ export class Navbar {
       display_name: 'Business',
     },
     {
-      section: 'climate',
-      display_name: 'Climate',
-    },
-    {
-      section: 'education',
-      display_name: 'Education',
-    },
-    {
       section: 'food',
       display_name: 'Food',
     },
@@ -76,20 +68,12 @@ export class Navbar {
       display_name: 'Health',
     },
     {
-      section: 'home & garden',
-      display_name: 'Home & Garden',
-    },
-    {
-      section: 'job market',
-      display_name: 'Job Market',
+      section: 'home',
+      display_name: 'Home',
     },
     {
       section: 'movies',
       display_name: 'Movies',
-    },
-    {
-      section: 'multimedia/photos',
-      display_name: 'Multimedia/Photos',
     },
     {
       section: 'science',
@@ -108,12 +92,8 @@ export class Navbar {
       display_name: 'Travel',
     },
     {
-      section: 'u.s.',
-      display_name: 'U.S.',
-    },
-    {
-      section: 'universal',
-      display_name: 'Universal',
+      section: 'us',
+      display_name: 'US',
     },
     {
       section: 'world',

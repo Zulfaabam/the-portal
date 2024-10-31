@@ -4,7 +4,7 @@
   @if (isLoading) {
     <app-loading class="mx-auto" />
   } @else if (errorMessage) {
-    <app-error [errorMessage]="errorMessage" />
+    <app-error [errorMessage]="errorMessage" class="mx-auto" />
   } @else {
     <section class="flex flex-col xl:flex-row gap-5">
       <div class="w-full xl:w-1/2">

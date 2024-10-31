@@ -6,10 +6,12 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   selector: 'app-error',
   template: `
-    <div class="flex flex-col gap-2 items-center justify-center h-56 w-full">
-      <div class="px-4 py-2 font-medium leading-none text-center text-red-600">
+    <div
+      class="flex flex-col gap-4 items-center justify-center h-56 w-full md:w-96 mx-auto"
+    >
+      <p class="font-medium text-center text-red-600 w-full break-words">
         {{ errorMessage }}
-      </div>
+      </p>
       <a
         routerLink="/"
         class="text-white bg-orange-500 hover:bg-orange-600 font-medium rounded-xl text-sm px-4 py-2"
