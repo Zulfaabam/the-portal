@@ -5,19 +5,13 @@
     <h1 class="text-3xl font-serif sm:w-[250px] lg:w-[300px]">The Portal</h1>
     <ul class="hidden md:flex items-center gap-4 lg:gap-8 capitalize">
       <li class="cursor-pointer">
-        <a
-          routerLink="/"
-          routerLinkActive="router-link-active"
-          ariaCurrentWhenActive="page"
-        >
-          Home
-        </a>
+        <a routerLink="/" class="font-medium"> Home </a>
       </li>
       <li
         class="cursor-pointer flex gap-1 items-center relative"
         (mouseover)="isSectionMenuOpened = true"
       >
-        <p>Sections</p>
+        <p class="font-medium">Sections</p>
         <svg
           width="20px"
           height="20px"
