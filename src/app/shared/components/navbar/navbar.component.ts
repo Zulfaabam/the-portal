@@ -131,5 +131,7 @@ export class Navbar {
     const keyword: string = this.searchForm.value.keyword;
 
     this.router.navigate(['/search', keyword]);
+
+    this.searchForm.reset();
   }
 }

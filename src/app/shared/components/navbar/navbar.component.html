@@ -102,11 +102,11 @@
       </svg>
     </button>
     <div
-      class="w-1/2 absolute -bottom-48 right-0 shadow-md bg-neutral-950 h-48 z-50 p-4 cursor-default"
+      class="w-3/4 xl:w-1/2 absolute -bottom-48 right-0 shadow-md bg-neutral-950 h-48 z-50 p-4 cursor-default"
       [ngClass]="isSectionMenuOpened ? 'block' : 'hidden'"
       (mouseleave)="isSectionMenuOpened = false"
     >
-      <ul class="grid grid-cols-4 gap-y-1">
+      <ul class="grid grid-cols-4 gap-y-1 text-center">
         @for (section of sections; track section.section) {
           <li>
             <a
@@ -121,7 +121,7 @@
       </ul>
     </div>
     <div
-      class="bg-neutral-950 w-full h-64 absolute -bottom-64 left-0 right-0 px-4 md:hidden"
+      class="bg-neutral-950 w-full h-96 absolute -bottom-96 left-0 right-0 px-4 md:hidden"
       [ngClass]="isMenuMobileOpen ? 'block' : 'hidden'"
     >
       <ul class="flex flex-col gap-4 capitalize">
@@ -153,13 +153,13 @@
           </svg>
         </li>
       </ul>
-      <ul class="grid grid-cols-3">
+      <ul class="grid grid-cols-2">
         @for (section of sections; track section.section) {
           <li>
             <a
               [routerLink]="['/section', section.section]"
               routerLinkActive="router-link-active"
-              class="text-gray-300 hover:underline transition-all duration-300 ease-in"
+              class="text-gray-300 hover:underline transition-all duration-300 ease-in text-sm"
               (click)="openMenuMobile()"
             >
               {{ section.display_name }}
@@ -167,6 +167,53 @@
           </li>
         }
       </ul>
+      <form
+        class="block mt-4"
+        [formGroup]="searchForm"
+        (ngSubmit)="handleSubmit()"
+      >
+        <label
+          for="news-search"
+          class="mb-2 text-sm font-medium text-gray-900 sr-only"
+        >
+          Search
+        </label>
+        <div class="relative">
+          <div
+            class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+          >
+            <svg
+              class="w-4 h-4 text-gray-500"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+              />
+            </svg>
+          </div>
+          <input
+            type="search"
+            id="news-search"
+            class="block w-full px-4 py-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-xl bg-gray-50 focus:ring-orange-500 focus:border-orange-500 outline-none"
+            placeholder="Search news..."
+            required
+            formControlName="keyword"
+          />
+          <button
+            type="submit"
+            class="text-white absolute end-2.5 bottom-[5px] bg-orange-500 hover:bg-orange-600 font-medium rounded-xl text-sm px-4 py-2"
+          >
+            Search
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </nav>

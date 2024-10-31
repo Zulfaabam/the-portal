@@ -35,6 +35,7 @@ export class SectionPage {
           this.newsResult = data.results;
         },
         error: (err) => {
+          this.isLoading = false;
           this.errorMessage = err;
         },
         complete: () => {

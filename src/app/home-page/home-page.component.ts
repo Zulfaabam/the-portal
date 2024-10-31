@@ -57,6 +57,7 @@ export class HomePage {
           .slice(0, 8);
       },
       error: (err) => {
+        this.isLoading = false;
         this.errorMessage = err;
       },
       complete: () => {
