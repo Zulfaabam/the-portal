@@ -1,4 +1,6 @@
-<div class="flex flex-col-reverse sm:flex-row gap-2 lg:gap-4 items-start">
+<div
+  class="flex flex-col-reverse sm:flex-row gap-2 lg:gap-4 items-start w-full"
+>
   <div class="flex flex-col gap-1 lg:gap-5">
     <a
       [href]="story.url"
@@ -20,11 +22,18 @@
       </p>
     </div>
   </div>
-  <a [href]="story.url" target="_blank" rel="noopener noreferrer">
+  <a
+    [href]="story.url"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="w-full xs:w-[354px] xs:h-[236px] sm:w-[300px] sm:h-[200px] relative aspect-[3/2]"
+  >
     <img
-      [src]="story.multimedia[1].url"
+      [ngSrc]="story.multimedia[1].url"
       [alt]="story.multimedia[1].caption"
-      class="rounded-xl w-[354px] h-[236px] sm:min-w-[300px] sm:max-w-[300px] sm:h-[200px]"
+      fill
+      priority
+      class="rounded-xl"
     />
   </a>
 </div>

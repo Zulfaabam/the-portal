@@ -1,23 +1,31 @@
-<a
-  class="text-xl sm:text-2xl lg:text-3xl font-serif font-semibold mb-3 md:mb-2"
-  [href]="story.url"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  {{ story.title }}
-</a>
-<div class="flex gap-2 items-center mb-2 md:mb-4">
-  <p class="text-orange-600 font-medium uppercase text-sm md:text-base">
-    {{ story.section }}
-  </p>
-  <div class="h-4 w-[1px] bg-gray-300"></div>
-  <p class="text-gray-500 text-sm md:text-base">{{ story.byline }}</p>
+<div class="flex flex-col w-full">
+  <a
+    class="text-xl sm:text-2xl lg:text-3xl font-serif font-semibold mb-3 md:mb-2"
+    [href]="story.url"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {{ story.title }}
+  </a>
+  <div class="flex gap-2 items-center mb-2 md:mb-4">
+    <p class="text-orange-600 font-medium uppercase text-sm md:text-base">
+      {{ story.section }}
+    </p>
+    <div class="h-4 w-[1px] bg-gray-300"></div>
+    <p class="text-gray-500 text-sm md:text-base">{{ story.byline }}</p>
+  </div>
+  <a
+    [href]="story.url"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="relative aspect-[3/2] w-full xs:w-[354px] sm:w-[600px] 3xl:w-[756px]"
+  >
+    <img
+      [ngSrc]="story.multimedia[1].url"
+      [alt]="story.multimedia[1].caption"
+      priority
+      fill
+      class="rounded-xl"
+    />
+  </a>
 </div>
-<a [href]="story.url" target="_blank" rel="noopener noreferrer" class="w-fit">
-  <img
-    [src]="story.multimedia[1].url"
-    [alt]="story.multimedia[1].caption"
-    priority
-    class="rounded-xl w-[354px] h-[236px] sm:w-[600px] sm:h-[400px] md:w-[756px] md:h-[504px]"
-  />
-</a>
