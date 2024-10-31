@@ -29,7 +29,11 @@
         </svg>
       </li>
     </ul>
-    <form class="hidden md:block sm:w-[250px] lg:w-[300px]">
+    <form
+      class="hidden md:block sm:w-[250px] lg:w-[300px]"
+      [formGroup]="searchForm"
+      (ngSubmit)="handleSubmit()"
+    >
       <label
         for="news-search"
         class="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -62,10 +66,11 @@
           class="block w-full px-4 py-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-xl bg-gray-50 focus:ring-orange-500 focus:border-orange-500 outline-none"
           placeholder="Search news..."
           required
+          formControlName="keyword"
         />
         <button
           type="submit"
-          class="text-white absolute end-2.5 bottom-[5px] bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-xl text-sm px-4 py-2"
+          class="text-white absolute end-2.5 bottom-[5px] bg-orange-500 hover:bg-orange-600 font-medium rounded-xl text-sm px-4 py-2"
         >
           Search
         </button>

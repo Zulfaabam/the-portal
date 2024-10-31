@@ -1,17 +1,33 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { SectionResult } from '../../../core/models/section-list.model';
 import { NgClass } from '@angular/common';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, NgClass],
+  imports: [RouterLink, RouterLinkActive, NgClass, ReactiveFormsModule],
   templateUrl: './navbar.component.html',
 })
 export class Navbar {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
+
   isSectionMenuOpened: boolean = false;
   isMenuMobileOpen: boolean = false;
+  searchText: string = '';
+
+  searchForm = new FormGroup({
+    keyword: new FormControl(''),
+  });
 
   menuItems = [
     {
@@ -107,5 +123,13 @@ export class Navbar {
 
   openMenuMobile() {
     this.isMenuMobileOpen = !this.isMenuMobileOpen;
+  }
+
+  handleSubmit() {
+    if (!this.searchForm.value.keyword) return;
+
+    const keyword: string = this.searchForm.value.keyword;
+
+    this.router.navigate(['/search', keyword]);
   }
 }
