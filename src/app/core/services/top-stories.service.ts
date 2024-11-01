@@ -14,9 +14,9 @@ export class TopStoriesService {
       `https://api.nytimes.com/svc/topstories/v2/${section}.json`,
       {
         params: {
-          'api-key': import.meta.env.NG_APP_NYT_API_KEY,
+          'api-key': process.env.NG_APP_NYT_API_KEY,
         },
-      }
+      },
     );
   }
 }
