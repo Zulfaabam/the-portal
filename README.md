@@ -9,6 +9,16 @@ The Portal is a dynamic news portal website built with Angular and styled using 
 
 Please visit the live demo [here](https://the-portal-seven.vercel.app/)
 
+## Deployment
+
+I deployed this project on [Vercel](https://vercel.com/) using the Angular framework preset and override the build command with:
+
+```bash
+node -r dotenv/config mynode.js; ng build
+```
+
+That command will run the _mynode.js_ file that I use to setting up the environment for the API Key for this project. Please read [this article](https://medium.com/@lara.delrio333/deploy-an-angular-project-in-vercel-with-secret-environment-variables-74323925712d) for more details.
+
 ## Clone this project
 
 To set up The Portal on your local machine, follow these steps:
@@ -16,7 +26,7 @@ To set up The Portal on your local machine, follow these steps:
 1. **Clone the repository**:
 
 ```bash
-git clone https://github.com/your-username/the-portal.git
+git clone https://github.com/Zulfaabam/the-portal.git
 cd the-portal
 ```
 
