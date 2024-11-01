@@ -1,18 +1,54 @@
-# ThePortal
+# The Portal
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+The Portal is a dynamic news portal website built with Angular and styled using TailwindCSS, featuring real-time news content sourced from [The New York Times API](https://developer.nytimes.com/apis). With a clean, user-friendly layout, it offers a seamless reading experience across devices. Key features include:
 
-## Development server
+- Top Stories: Stay updated with the most important news at a glance.
+- Latest News: Discover the newest articles across all categories.
+- News Sections: Explore a variety of sections catering to different interests.
+- Search: Find specific articles or topics quickly and easily.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Please visit the live demo [here](https://the-portal-seven.vercel.app/)
 
-## Code scaffolding
+## Clone this project
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To set up The Portal on your local machine, follow these steps:
+
+1. **Clone the repository**:
+
+```bash
+git clone https://github.com/your-username/the-portal.git
+cd the-portal
+```
+
+2. **Install dependencies**:
+
+   Make sure you have Node.js installed, then run:
+
+```bash
+npm install
+```
+
+3. **Set up the New York Times API**:
+   - Go to The New York Times Developer portal and sign up for an API key.
+   - Create a .env file in the root directory of the project and add your API key:
+
+```bash
+NG_APP_NYT_API_KEY=your-api-key
+```
+
+4. **Run the application**:
+
+```bash
+npm start
+```
+
+The application should now be running on <http://localhost:4200>.
+
+This project is now ready to explore and customize!
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `node -r dotenv/config mynode.js; ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
