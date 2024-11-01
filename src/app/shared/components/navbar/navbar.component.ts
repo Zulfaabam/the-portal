@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
 import {
-  ActivatedRoute,
-  Router,
-  RouterLink,
-  RouterLinkActive,
-} from '@angular/router';
+  Component,
+  effect,
+  ElementRef,
+  signal,
+  viewChild,
+} from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { SectionResult } from '../../../core/models/section-list.model';
 import { NgClass } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { animate, scroll } from 'motion';
 
 @Component({
   selector: 'app-navbar',
@@ -16,10 +18,11 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './navbar.component.html',
 })
 export class Navbar {
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-  ) {}
+  constructor(private router: Router) {}
+
+  navbar = viewChild.required<ElementRef>('navbar');
+
+  isNavbarVisible = signal(true);
 
   isSectionMenuOpened: boolean = false;
   isMenuMobileOpen: boolean = false;
@@ -100,6 +103,29 @@ export class Navbar {
       display_name: 'World',
     },
   ];
+
+  ngOnInit() {
+    scroll((controls) => {
+      const position = controls.y.current;
+      const velocity = controls.y.velocity;
+
+      if (Math.abs(velocity) > 50) {
+        if (position < 300 || velocity < 0) {
+          this.isNavbarVisible.set(true);
+        } else {
+          this.isNavbarVisible.set(false);
+        }
+      }
+    });
+  }
+
+  animateNavbar = effect(() => {
+    if (this.isNavbarVisible()) {
+      animate(this.navbar().nativeElement, { y: '0%' }, { duration: 0.2 });
+    } else {
+      animate(this.navbar().nativeElement, { y: '-90%' }, { duration: 0.2 });
+    }
+  });
 
   openMenuMobile() {
     this.isMenuMobileOpen = !this.isMenuMobileOpen;

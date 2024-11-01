@@ -1,4 +1,12 @@
-<nav class="fixed top-0 left-0 right-0 bg-neutral-950 text-slate-50 z-40">
+<nav
+  #navbar
+  class="fixed top-0 left-0 right-0 bg-neutral-950 text-slate-50 z-40"
+  [ngClass]="
+    isMenuMobileOpen
+      ? 'rounded-b-none shadow-none'
+      : 'rounded-b-xl shadow-sm shadow-neutral-900'
+  "
+>
   <div
     class="px-4 2xl:px-0 max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 3xl:max-w-screen-2xl mx-auto flex items-center justify-between min-h-16 relative"
   >
@@ -102,7 +110,7 @@
       </svg>
     </button>
     <div
-      class="w-3/4 xl:w-1/2 absolute -bottom-48 right-0 shadow-md bg-neutral-950 h-48 z-50 p-4 cursor-default"
+      class="w-3/4 xl:w-1/2 absolute -bottom-40 right-0 bg-neutral-950 h-40 z-50 p-4 rounded-b-xl shadow-sm shadow-neutral-900"
       [ngClass]="isSectionMenuOpened ? 'block' : 'hidden'"
       (mouseleave)="isSectionMenuOpened = false"
     >
@@ -121,7 +129,7 @@
       </ul>
     </div>
     <div
-      class="bg-neutral-950 w-full h-96 absolute -bottom-96 left-0 right-0 px-4 md:hidden"
+      class="bg-neutral-950 w-full h-96 absolute -bottom-96 left-0 right-0 px-4 md:hidden rounded-b-xl shadow-sm shadow-neutral-900"
       [ngClass]="isMenuMobileOpen ? 'block' : 'hidden'"
     >
       <ul class="flex flex-col gap-4 capitalize">
