@@ -10,80 +10,82 @@
   <div
     class="px-4 2xl:px-0 max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 3xl:max-w-screen-2xl mx-auto flex items-center justify-between min-h-16 relative"
   >
-    <h1 class="text-3xl font-serif sm:w-[250px] lg:w-[300px]">The Portal</h1>
-    <ul class="hidden md:flex items-center gap-4 lg:gap-8 capitalize">
-      <li class="cursor-pointer">
-        <a routerLink="/" class="font-medium"> Home </a>
-      </li>
-      <li
-        class="cursor-pointer flex gap-1 items-center relative"
-        (mouseover)="isSectionMenuOpened = true"
-      >
-        <p class="font-medium">Sections</p>
-        <svg
-          width="20px"
-          height="20px"
-          viewBox="0 0 24 24"
-          fill="#ffffff"
-          xmlns="http://www.w3.org/2000/svg"
-          class="dropdown-arrow"
+    <h1 class="text-3xl font-serif">The Portal</h1>
+    <div class="flex gap-4 lg:gap-8 items-center">
+      <ul class="hidden md:flex items-center gap-4 lg:gap-8 capitalize">
+        <li class="cursor-pointer">
+          <a routerLink="/" class="font-medium"> Home </a>
+        </li>
+        <li
+          class="cursor-pointer flex gap-1 items-center relative"
+          (mouseover)="isSectionMenuOpened = true"
         >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z"
-            fill="#ffffff"
-          />
-        </svg>
-      </li>
-    </ul>
-    <form
-      class="hidden md:block sm:w-[250px] lg:w-[300px]"
-      [formGroup]="searchForm"
-      (ngSubmit)="handleSubmit()"
-    >
-      <label
-        for="news-search"
-        class="mb-2 text-sm font-medium text-gray-900 sr-only"
-      >
-        Search
-      </label>
-      <div class="relative">
-        <div
-          class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
-        >
+          <p class="font-medium">Sections</p>
           <svg
-            class="w-4 h-4 text-gray-500"
-            aria-hidden="true"
+            width="20px"
+            height="20px"
+            viewBox="0 0 24 24"
+            fill="#ffffff"
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20"
+            class="dropdown-arrow"
           >
             <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z"
+              fill="#ffffff"
             />
           </svg>
-        </div>
-        <input
-          type="search"
-          id="news-search"
-          class="block w-full px-4 py-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-xl bg-gray-50 focus:ring-orange-500 focus:border-orange-500 outline-none"
-          placeholder="Search news..."
-          required
-          formControlName="keyword"
-        />
-        <button
-          type="submit"
-          class="text-white absolute end-2.5 bottom-[5px] bg-orange-500 hover:bg-orange-600 font-medium rounded-xl text-sm px-4 py-2"
+        </li>
+      </ul>
+      <form
+        class="hidden md:block sm:w-[250px] lg:w-[300px]"
+        [formGroup]="searchForm"
+        (ngSubmit)="handleSubmit()"
+      >
+        <label
+          for="news-search"
+          class="mb-2 text-sm font-medium text-gray-900 sr-only"
         >
           Search
-        </button>
-      </div>
-    </form>
+        </label>
+        <div class="relative">
+          <div
+            class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+          >
+            <svg
+              class="w-4 h-4 text-gray-500"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+              />
+            </svg>
+          </div>
+          <input
+            type="search"
+            id="news-search"
+            class="block w-full px-4 py-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-xl bg-gray-50 focus:ring-orange-500 focus:border-orange-500 outline-none"
+            placeholder="Search news..."
+            required
+            formControlName="keyword"
+          />
+          <button
+            type="submit"
+            class="text-white absolute end-2.5 bottom-[5px] bg-orange-500 hover:bg-orange-600 font-medium rounded-xl text-sm px-4 py-2"
+          >
+            Search
+          </button>
+        </div>
+      </form>
+    </div>
     <button
       data-collapse-toggle="navbar-hamburger"
       type="button"
@@ -129,7 +131,7 @@
       </ul>
     </div>
     <div
-      class="bg-neutral-950 w-full h-96 absolute -bottom-96 left-0 right-0 px-4 md:hidden rounded-b-xl shadow-sm shadow-neutral-900"
+      class="bg-neutral-950 w-full h-80 absolute -bottom-80 left-0 right-0 px-4 md:hidden rounded-b-xl shadow-sm shadow-neutral-900"
       [ngClass]="isMenuMobileOpen ? 'block' : 'hidden'"
     >
       <ul class="flex flex-col gap-4 capitalize">
