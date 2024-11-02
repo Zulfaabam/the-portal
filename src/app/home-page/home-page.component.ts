@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  effect,
+  ElementRef,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Navbar } from '../shared/components/navbar/navbar.component';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
@@ -12,6 +18,7 @@ import { Footer } from '../shared/components/footer/footer.component';
 import { Loading } from '../shared/components/loading/loading.component';
 import { Error } from '../shared/components/error/error.component';
 import { HttpErrorResponse } from '@angular/common/http';
+import { animate, stagger } from 'motion';
 
 @Component({
   selector: 'home-page',
@@ -32,6 +39,11 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './home-page.component.html',
 })
 export class HomePage {
+  topStoriesSectRef = viewChild.required<ElementRef>('topStoriesSection');
+  latestNewsSectRef = viewChild.required<ElementRef>('latestNewsSection');
+
+  isLoadComplete = signal(false);
+
   isLoading: boolean = false;
   errorMessage: string = '';
   firstStory!: Result;
@@ -59,11 +71,36 @@ export class HomePage {
       },
       error: (err: HttpErrorResponse) => {
         this.isLoading = false;
+        this.isLoadComplete.set(true);
         this.errorMessage = err.message;
       },
       complete: () => {
         this.isLoading = false;
+        this.isLoadComplete.set(true);
       },
     });
   }
+
+  animateSections = effect(() => {
+    if (this.isLoadComplete()) {
+      animate(
+        this.topStoriesSectRef().nativeElement,
+        { x: ['-100%', '0%'] },
+        {
+          delay: stagger(0.1),
+          duration: 1,
+          easing: [0.22, 0.03, 0.26, 1],
+        },
+      );
+      animate(
+        this.latestNewsSectRef().nativeElement,
+        { y: ['100%', '0%'] },
+        {
+          delay: stagger(0.2),
+          duration: 1,
+          easing: [0.22, 0.03, 0.26, 1],
+        },
+      );
+    }
+  });
 }
