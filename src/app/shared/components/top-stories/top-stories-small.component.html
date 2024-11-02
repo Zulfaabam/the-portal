@@ -28,11 +28,15 @@
     rel="noopener noreferrer"
     class="w-full xs:w-[354px] xs:h-[236px] sm:w-[300px] sm:h-[200px] relative aspect-[3/2]"
   >
-    <img
-      [ngSrc]="story.multimedia[1].url"
-      [alt]="story.multimedia[1].caption"
-      fill
-      class="rounded-xl"
-    />
+    @if (!story.multimedia) {
+      <img ngSrc="/no-image.svg" alt="news picture" fill class="rounded-xl" />
+    } @else {
+      <img
+        [ngSrc]="story.multimedia[1].url || '/public/no-image.svg'"
+        [alt]="story.multimedia[1].caption || 'news picture'"
+        fill
+        class="rounded-xl"
+      />
+    }
   </a>
 </div>

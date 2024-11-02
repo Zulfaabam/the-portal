@@ -42,7 +42,7 @@ export class SectionPage {
       .pipe()
       .subscribe({
         next: (data) => {
-          this.newsResult = data.results;
+          this.newsResult = data.results?.filter((r) => r.title !== '');
         },
         error: (err: HttpErrorResponse) => {
           this.isLoading = false;
