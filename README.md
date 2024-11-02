@@ -1,13 +1,13 @@
 # The Portal
 
-The Portal is a dynamic news portal website built with Angular and styled using TailwindCSS, featuring real-time news content sourced from [The New York Times API](https://developer.nytimes.com/apis). With a clean, user-friendly layout, it offers a seamless reading experience across devices. Key features include:
+The Portal is a dynamic news portal website built with [Angular](https://angular.dev/), styled using [TailwindCSS](https://tailwindcss.com/), slightly animated using [Motion One](https://motion.dev/), featuring real-time news content sourced from [The New York Times API](https://developer.nytimes.com/apis). With a clean, user-friendly layout, it offers a seamless reading experience across devices. Key features include:
 
 - Top Stories: Stay updated with the most important news at a glance.
 - Latest News: Discover the newest articles across all categories.
 - News Sections: Explore a variety of sections catering to different interests.
 - Search: Find specific articles or topics quickly and easily.
 
-Please visit the live demo [here](https://the-portal-seven.vercel.app/)
+Please visit the live demo [here](https://the-portal-seven.vercel.app/).
 
 ## Deployment
 
@@ -68,6 +68,11 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Author
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Hi, my name is Abam. Let's connect!
+
+- Website - [Abam](https://abams.vercel.app/)
+- Twitter - [@zabamz1](https://www.twitter.com/zabamz1)
+- Instagram - [@zfaabam](https://www.instagram.com/zfaabam/)
+- LinkedIn - [Zulfa Fatah Akbar Ahmad](https://www.linkedin.com/in/zulfa-fatah-akbar-ahmad/)
