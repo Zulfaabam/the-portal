@@ -1,10 +1,17 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  effect,
+  ElementRef,
+  Input,
+  viewChildren,
+} from '@angular/core';
 import { TopStoriesService } from '../core/services/top-stories.service';
 import { Result } from '../core/models/result.model';
 import { TopStoriesSmall } from '../shared/components/top-stories/top-stories-small.component';
 import { Loading } from '../shared/components/loading/loading.component';
 import { Error } from '../shared/components/error/error.component';
 import { HttpErrorResponse } from '@angular/common/http';
+import { animate, scroll } from 'motion';
 
 @Component({
   selector: 'section-page',
@@ -17,6 +24,8 @@ export class SectionPage {
   errorMessage: string = '';
   newsResult!: Result[];
   sectionTitle: string = '';
+
+  sectionNews = viewChildren<ElementRef>('sectionNews');
 
   constructor(private topStoriesService: TopStoriesService) {}
 
@@ -37,7 +46,6 @@ export class SectionPage {
         },
         error: (err: HttpErrorResponse) => {
           this.isLoading = false;
-          console.error(err);
           this.errorMessage = err.message;
         },
         complete: () => {
@@ -45,4 +53,13 @@ export class SectionPage {
         },
       });
   }
+
+  fadeInFadeOut = effect(() => {
+    this.sectionNews().forEach((item) => {
+      scroll(animate(item.nativeElement, { opacity: [0, 1, 1, 0] }), {
+        target: item.nativeElement,
+        offset: ['start end', 'end end', 'start start', 'end start'],
+      });
+    });
+  });
 }

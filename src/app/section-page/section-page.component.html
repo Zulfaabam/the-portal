@@ -18,7 +18,9 @@
       <app-error [errorMessage]="errorMessage" class="xl:col-span-2" />
     } @else {
       @for (news of newsResult; track news.title) {
-        <top-stories-small [story]="news" />
+        <div id="sectionNews">
+          <top-stories-small [story]="news" #sectionNews />
+        </div>
       }
     }
   </div>
